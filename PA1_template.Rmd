@@ -33,22 +33,12 @@ The dataset has the following variables:
 ==============================================
 
 ## Loading and preprocessing the data
-Download the dataset from the source and work in the path of your choice. Execute
-this chunk of code:
-```{r, echo=TRUE, results='hide'}
-
-path <- "C:/Coursera/Reproducible Research"
-setwd(path)
-url <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
-download.file(url, method = "auto", destfile = "repdata-data-activity.zip")
-
-```
-
-Read the file **activity.csv** using `read.csv()`:
+It's not necessary to download the dataset because it's contained in the repository in the file
+activity.zip. We have to read the file **activity.csv** using `read.csv()`:
 
 ```{r, echo=TRUE}
 
-dataset <- read.csv(unzip("repdata-data-activity.zip", "activity.csv"), 
+dataset <- read.csv(unzip("activity.zip", "activity.csv"), 
                     header = TRUE, 
                     colClasses = c("numeric", "Date", "numeric")
                     )

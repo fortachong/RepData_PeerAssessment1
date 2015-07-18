@@ -30,25 +30,12 @@ The dataset has the following variables:
 ==============================================
 
 ## Loading and preprocessing the data
-Download the dataset from the source and work in the path of your choice. Execute
-this chunk of code:
-
-```r
-path <- "C:/Coursera/Reproducible Research"
-setwd(path)
-url <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2Factivity.zip"
-download.file(url, method = "auto", destfile = "repdata-data-activity.zip")
-```
-
-```
-## Error in download.file(url, method = "auto", destfile = "repdata-data-activity.zip"): esquema de URL sin soporte
-```
-
-Read the file **activity.csv** using `read.csv()`:
+It's not necessary to download the dataset because it's contained in the repository in the file
+activity.zip. We have to read the file **activity.csv** using `read.csv()`:
 
 
 ```r
-dataset <- read.csv(unzip("repdata-data-activity.zip", "activity.csv"), 
+dataset <- read.csv(unzip("activity.zip", "activity.csv"), 
                     header = TRUE, 
                     colClasses = c("numeric", "Date", "numeric")
                     )
@@ -109,7 +96,7 @@ hist(da_f$steps,
      )
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png) 
+![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png) 
 
 ### 3. Mean and median of total number of steps
 Using `mean()` and `median()` we can calculate the **mean** and the **median** respectively for
@@ -188,7 +175,7 @@ with(ds_f_interval, {
   )
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png) 
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
 
 ### 2. Maximun number of steps
 Using the averaged data the interval with the maximum number of intervals can be calculated as follows:
@@ -323,7 +310,7 @@ hist(da_f_cpy$steps,
      )
 ```
 
-![plot of chunk unnamed-chunk-13](figure/unnamed-chunk-13-1.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
 
 ```r
 m_ds_cpy <- mean(da_f_cpy$steps)
@@ -376,4 +363,4 @@ xyplot(steps ~ interval | type,
        )
 ```
 
-![plot of chunk unnamed-chunk-15](figure/unnamed-chunk-15-1.png) 
+![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png) 
