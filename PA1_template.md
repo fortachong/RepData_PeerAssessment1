@@ -208,10 +208,12 @@ The number of NA values is **2304**
 
 ### 2. Filling the missing values
 An acceptable strategy for imputing the missing values could be to use the average
-number of steps per 5-minute interval. The aggregated data is in the dataframe 
-`ds_f_interval` which contains the averages per 5-minute interval.
-We iterate over `dataset_cpy` replacing NA values with the corresponding
-average value (rounded with `ceiling()`):
+number of steps per 5-minute interval. We will use the dataframe 
+`ds_f_interval` as a lookup table in order to fill the missing **steps** value.
+As we saw previously `ds_f_interval` has two columns: **interval** which is the
+interval identifier and **steps** which is the average number of steps for that interval.
+We iterate over the rows of the original data `dataset_cpy` (a copy of `dataset`).
+If that row has NA in the **steps** column, we lookup that value from `ds_f_interval` (rounded with `ceiling()`):
 
 
 ```r

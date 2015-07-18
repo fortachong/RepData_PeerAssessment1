@@ -388,10 +388,12 @@ introduce bias in the calculations  </p>
 <h3>2. Filling the missing values</h3>
 
 <p>An acceptable strategy for imputing the missing values could be to use the average
-number of steps per 5-minute interval. The aggregated data is in the dataframe 
-<code>ds_f_interval</code> which contains the averages per 5-minute interval.
-We iterate over <code>dataset_cpy</code> replacing NA values with the corresponding
-average value (rounded with <code>ceiling()</code>):</p>
+number of steps per 5-minute interval. We will use the dataframe 
+<code>ds_f_interval</code> as a lookup table in order to fill the missing <strong>steps</strong> value.
+As we saw previously <code>ds_f_interval</code> has two columns: <strong>interval</strong> which is the
+interval identifier and <strong>steps</strong> which is the average number of steps for that interval.
+We iterate over the rows of the original data <code>dataset_cpy</code> (a copy of <code>dataset</code>).
+If that row has NA in the <strong>steps</strong> column, we lookup that value from <code>ds_f_interval</code> (rounded with <code>ceiling()</code>):</p>
 
 <pre><code class="r">dataset_cpy &lt;- dataset
 
